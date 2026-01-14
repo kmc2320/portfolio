@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riko Takeda | Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           Global Settings
+           ========================================= */
+        :root {
+            --bg-color: #FFF8E7; /* クリーム色 */
+            --text-color: #333333;
+            --accent-color: #FFD700;
+            --outline-color: #F0E6D2;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'Varela Round', 'Zen Kaku Gothic New', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        h2.section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* タイトルの下の蛍光ペン風あしらい */
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: -10px;
+            right: -10px;
+            height: 15px;
+            background: rgba(255, 215, 0, 0.4);
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+
+        /* =========================================
+           Section 1: Hero
+           ========================================= */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .memoji-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 画像がない場合のプレースホルダー */
+        .placeholder-emoji { font-size: 150px; }
+        .floating-icon {
+            position: absolute;
+            font-size: 50px; /* 画像を入れる時はwidth: 60pxなどに変更 */
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .icon-pc { top: 20%; left: -20%; animation-delay: 0s; }
+        .icon-coffee { top: 10%; right: -10%; animation-delay: 1s; }
+        .icon-palette { bottom: 10%; left: -10%; animation-delay: 0.5s; }
+        .icon-headphone { bottom: 20%; right: -20%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero h1 { font-size: 3rem; margin: 20px 0 10px; }
+        .hero p { font-size: 1.2rem; color: #666; }
+
+        /* =========================================
+           Section 2: My Value
+           ========================================= */
+        .value-section {
+            position: relative;
+            padding: 150px 20px;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .marquee-bg {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            font-size: 12rem;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--outline-color);
+            opacity: 0.5;
+            z-index: 0;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, -50%); }
+            100% { transform: translate(-50%, -50%); }
+        }
+
+        .value-card {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 80px 60px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+        }
+
+        .value-card h2 { font-size: 2.5rem; margin-bottom: 20px; font-weight: 700; }
+        .value-card .sub-title { font-size: 1.2rem; margin-bottom: 40px; font-weight: 700; }
+        .value-card .description {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-weight: 400;
+            line-height: 2.2;
+            color: #444;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* =========================================
+           Section 3: About Me (ID Card)
+           ========================================= */
+        .about-section {
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .id-card {
+            width: 320px;
+            height: 480px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.5) inset,
+                0 20px 50px rgba(0,0,0,0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .id-card:hover { transform: translateY(-10px) rotate(2deg); }
+
+        .hole-punch { width: 60px; height: 10px; background: #E0E0E0; border-radius: 5px; margin-bottom: 30px; }
+        
+        .id-photo {
+            width: 130px; height: 130px; background: #f0f0f0; border-radius: 50%;
+            margin-bottom: 20px; overflow: hidden; border: 3px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex; justify-content: center; align-items: center; font-size: 4rem;
+        }
+
+        .id-name { font-size: 1.8rem; font-weight: 700; margin: 10px 0 5px; }
+        .id-role { font-size: 0.9rem; color: #888; margin-bottom: 20px; }
+        
+        .status-badge {
+            background: #f5f5f5; padding: 8px 16px; border-radius: 50px;
+            font-size: 0.8rem; font-weight: 700; display: flex; align-items: center;
+        }
+        .status-dot {
+            width: 10px; height: 10px; background-color: #2ecc71; border-radius: 50%;
+            margin-right: 8px; box-shadow: 0 0 8px #2ecc71;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        /* =========================================
+           Section 4: Skills (Stickers)
+           ========================================= */
+        .skills-section { padding: 100px 20px; text-align: center; }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-badge {
+            background: #fff;
+            padding: 15px 30px;
+            border-radius: 50px; /* 丸っこく */
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #555;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            cursor: default;
+            border: 2px solid transparent;
+        }
+
+        .skill-badge:hover {
+            transform: scale(1.1) rotate(-3deg);
+            background: #fff;
+            border-color: var(--accent-color);
+            color: #000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* =========================================
+           Section 5: Works (Mac Windows)
+           ========================================= */
+        .works-section { padding: 100px 20px; }
+        
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .work-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .work-card:hover { transform: translateY(-10px); }
+
+        /* Macのウィンドウバー風 */
+        .window-bar {
+            background: #f0f0f0;
+            padding: 10px 15px;
+            display: flex;
+            gap: 6px;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        .work-img-area {
+            width: 100%;
+            height: 200px;
+            background: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #aaa;
+            font-size: 3rem;
+        }
+        
+        .work-img-area img { width: 100%; height: 100%; object-fit: cover; }
+
+        .work-content { padding: 25px; }
+        .work-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+        .work-desc { font-size: 0.9rem; color: #666; line-height: 1.6; margin-bottom: 15px; }
+        .work-tags { font-size: 0.8rem; color: #999; font-weight: 700; }
+
+        /* =========================================
+           Section 6: Footer / Contact
+           ========================================= */
+        .footer {
+            padding: 100px 20px 50px;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--bg-color), #FDF5E0);
+        }
+
+        .footer h2 { font-size: 3rem; margin-bottom: 20px; }
+        .footer p { margin-bottom: 40px; color: #666; }
+
+        .contact-btn {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s ease;
+        }
+        .contact-btn:hover { transform: scale(1.05); background: #000; }
+
+        .footer-links { margin-top: 50px; display: flex; justify-content: center; gap: 20px; }
+        .footer-links a { color: #888; text-decoration: none; font-weight: 700; }
+        .copyright { margin-top: 50px; font-size: 0.8rem; color: #aaa; }
+
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="memoji-container">
+            <div class="placeholder-emoji">👩🏻‍💻</div>
+            <div class="floating-icon icon-pc">💻</div>
+            <div class="floating-icon icon-coffee">🥤</div>
+            <div class="floating-icon icon-palette">🎨</div>
+            <div class="floating-icon icon-headphone">🎧</div>
+        </div>
+        <h1>HELLO</h1>
+        <p>I am Riko Takeda</p>
+    </section>
+
+    <section class="value-section">
+        <div class="marquee-bg">
+            IMAGINATION × TECHNOLOGY &nbsp; IMAGINATION × TECHNOLOGY &nbsp;
+        </div>
+        <div class="value-card">
+            <h2>Turning Ideas into Reality</h2>
+            <div class="sub-title">想像したものを、技術でさわれる現実に。</div>
+            <p class="description">
+                私はただコードを書くだけではありません。<br>
+                「こんなのがあったら楽しい」というアイデアを、<br>
+                確かな技術力で、誰もがワクワクする体験に変えていきます。<br>
+                デザインの感性と、実装力の両方で貢献します。
+            </p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <h2 class="section-title">About Me</h2>
+        <div class="id-card">
+            <div class="hole-punch"></div>
+            <div class="id-photo"><div style="font-size:3rem;">🙂</div></div>
+            <div class="id-name">RIKO TAKEDA</div>
+            <div class="id-role">Engineer / Designer</div>
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                Available for Internship
+            </div>
+            <div style="margin-top:auto; width:100%; border-top:1px dashed #ddd; padding-top:15px; font-size:0.7rem; color:#aaa;">
+                ID: 2024-2026<br>DEPT: ENGINEERING
+            </div>
+        </div>
+    </section>
+
+    <section class="skills-section">
+        <h2 class="section-title">My Weapons</h2>
+        <div class="skills-container">
+            <div class="skill-badge">HTML5</div>
+            <div class="skill-badge">CSS3</div>
+            <div class="skill-badge">JavaScript</div>
+            <div class="skill-badge">React</div>
+            <div class="skill-badge">TypeScript</div>
+            <div class="skill-badge">Figma</div>
+            <div class="skill-badge">Three.js</div>
+            <div class="skill-badge">UI Design</div>
+            <div class="skill-badge">Git / Github</div>
+        </div>
+    </section>
+
+    <section class="works-section">
+        <h2 class="section-title">Selected Works</h2>
+        <div class="works-grid">
+            
+            <div class="work-card">
+                <div class="window-bar"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+                <div class="work-img-area">🖼</div> <div class="work-content">
+                    <div class="work-title">Project Name 01</div>
+                    <div class="work-desc">ここに作品の簡単な説明を入れます。どのような課題を解決したかなど。</div>
+                    <div class="work-tags">#React #Figma</div>
+                </div>
+            </div>
+
+            <div class="work-card">
+                <div class="window-bar"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+                <div class="work-img-area">🖼</div>
+                <div class="work-content">
+                    <div class="work-title">Project Name 02</div>
+                    <div class="work-desc">ここに作品の簡単な説明を入れます。どのような技術を使ったかなど。</div>
+                    <div class="work-tags">#HTML/CSS #Javascript</div>
+                </div>
+            </div>
+
+            <div class="work-card">
+                <div class="window-bar"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+                <div class="work-img-area">🖼</div>
+                <div class="work-content">
+                    <div class="work-title">Project Name 03</div>
+                    <div class="work-desc">ここに作品の簡単な説明を入れます。チームでの役割など。</div>
+                    <div class="work-tags">#UI Design #Research</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <h2>Let's Talk!</h2>
+        <p>インターン、制作のご依頼など<br>お気軽にご連絡ください。</p>
+        
+        <a href="mailto:your-email@example.com" class="contact-btn">Send Email ✉️</a>
+
+        <div class="footer-links">
+            <a href="#">Github</a>
+            <a href="#">X (Twitter)</a>
+            <a href="#">Instagram</a>
+        </div>
+        <p class="copyright">© 2024 Riko Takeda. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
